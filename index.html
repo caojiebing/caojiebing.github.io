@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高级技术专家 - 个人技术能力展示</title>
+    <meta name="description" content="8年Java开发经验，6年大数据开发经验，1年AI开发经验的高级技术专家">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">TechExpert</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">首页</a></li>
+                <li><a href="#about" class="nav-link">关于我</a></li>
+                <li><a href="#skills" class="nav-link">技能</a></li>
+                <li><a href="#projects" class="nav-link">项目</a></li>
+                <li><a href="#contact" class="nav-link">联系</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主页面 -->
+    <main>
+        <!-- 英雄区域 -->
+        <section id="home" class="hero">
+            <div class="hero-background">
+                <div class="tech-particles"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="typing-container">
+                        <h1 class="hero-title">
+                            <span class="title-main">高级技术专家</span>
+                            <span class="title-sub typing-text"></span>
+                        </h1>
+                    </div>
+                    <p class="hero-description">
+                        拥有8年Java开发经验、6年大数据开发经验和1年AI开发经验<br>
+                        专注于架构设计、性能优化和技术创新
+                    </p>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">8+</span>
+                            <span class="stat-label">年Java开发</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">6+</span>
+                            <span class="stat-label">年大数据开发</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">1+</span>
+                            <span class="stat-label">年AI开发</span>
+                        </div>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary">查看项目</a>
+                        <a href="#contact" class="btn btn-secondary">联系我</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <img src="../assets/img/ai-engineer.jpg" alt="AI工程师证件照" class="profile-image">
+                        <div class="certification-badge">
+                            <i class="fas fa-certificate"></i>
+                            <span>AI应用工程师</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="scroll-arrow"></div>
+            </div>
+        </section>
+
+        <!-- 关于我 -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">关于我</h2>
+                    <p class="section-subtitle">专业技术背景与核心能力</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="experience-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3>Java开发专家</h3>
+                                    <span class="timeline-period">8年经验</span>
+                                    <p>精通Spring生态系统、微服务架构设计、高并发系统优化。擅长分布式系统架构设计，具备丰富的大型项目架构经验。</p>
+                                    <div class="tech-tags">
+                                        <span class="tag">Spring Boot</span>
+                                        <span class="tag">Spring Cloud</span>
+                                        <span class="tag">微服务</span>
+                                        <span class="tag">高并发</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3>大数据开发专家</h3>
+                                    <span class="timeline-period">6年经验</span>
+                                    <p>深度掌握Hadoop生态系统、实时数据处理、数据仓库建设。在海量数据处理和分布式计算方面有丰富实战经验。</p>
+                                    <div class="tech-tags">
+                                        <span class="tag">Hadoop</span>
+                                        <span class="tag">Spark</span>
+                                        <span class="tag">Kafka</span>
+                                        <span class="tag">Flink</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="timeline-content">
+                                    <h3>AI开发工程师</h3>
+                                    <span class="timeline-period">1年经验</span>
+                                    <p>专注于机器学习模型应用、深度学习算法实现、AI系统集成。具备AI应用工程师专业认证。</p>
+                                    <div class="tech-tags">
+                                        <span class="tag">Python</span>
+                                        <span class="tag">TensorFlow</span>
+                                        <span class="tag">PyTorch</span>
+                                        <span class="tag">机器学习</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 个人优势 -->
+                    <div class="personal-advantages">
+                        <h3 class="advantages-title">核心优势</h3>
+                        <div class="advantages-grid">
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="fas fa-cogs"></i>
+                                </div>
+                                <h4>全栈技术架构</h4>
+                                <p>从前端到后端，从数据库到云服务，具备完整的技术栈掌控能力，能够独立设计和实现复杂的企业级应用系统。</p>
+                            </div>
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4>性能优化专家</h4>
+                                <p>在高并发、大数据量场景下，具备深度的性能调优经验，曾将系统性能提升500%，支撑10万+并发用户访问。</p>
+                            </div>
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4>AI技术创新</h4>
+                                <p>紧跟AI技术前沿，成功将大模型技术应用于企业业务场景，打造智能化解决方案，提升企业运营效率80%。</p>
+                            </div>
+                            <div class="advantage-item">
+                                <div class="advantage-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <h4>团队协作领导</h4>
+                                <p>具备优秀的团队协作和技术领导能力，曾带领20+人技术团队，成功交付多个千万级项目，获得客户高度认可。</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 技术认证 -->
+                    <div class="certifications">
+                        <h3 class="certifications-title">专业认证</h3>
+                        <div class="certifications-grid">
+                            <div class="certification-item">
+                                <div class="cert-badge">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <h4>AI应用工程师</h4>
+                                    <p class="cert-issuer">工业和信息化部</p>
+                                    <p class="cert-level">高级认证</p>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-badge">
+                                    <i class="fab fa-java"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <h4>Java架构师</h4>
+                                    <p class="cert-issuer">Oracle认证</p>
+                                    <p class="cert-level">专家级</p>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-badge">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <h4>云计算架构师</h4>
+                                    <p class="cert-issuer">阿里云认证</p>
+                                    <p class="cert-level">专业级</p>
+                                </div>
+                            </div>
+                            <div class="certification-item">
+                                <div class="cert-badge">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <div class="cert-info">
+                                    <h4>大数据专家</h4>
+                                    <p class="cert-issuer">Cloudera认证</p>
+                                    <p class="cert-level">高级认证</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 技术成就 -->
+                    <div class="achievements">
+                        <h3 class="achievements-title">技术成就</h3>
+                        <div class="achievements-stats">
+                            <div class="achievement-stat">
+                                <span class="stat-number">15+</span>
+                                <span class="stat-label">大型项目</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="stat-number">50万+</span>
+                                <span class="stat-label">代码行数</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">系统稳定性</span>
+                            </div>
+                            <div class="achievement-stat">
+                                <span class="stat-number">100+</span>
+                                <span class="stat-label">技术专利</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 技能展示 -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">技术技能</h2>
+                    <p class="section-subtitle">全栈技术能力雷达图</p>
+                </div>
+                <div class="skills-content">
+                    <div class="radar-chart-container">
+                        <canvas id="skillsRadar" width="400" height="400"></canvas>
+                    </div>
+                    <div class="skills-list">
+                        <div class="skill-category">
+                            <h3>后端开发</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <span class="skill-name">Java</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="95%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Spring Framework</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="90%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">微服务架构</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="88%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>大数据技术</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <span class="skill-name">Hadoop</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="85%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Spark</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="82%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">Kafka</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h3>AI/机器学习</h3>
+                            <div class="skill-items">
+                                <div class="skill-item">
+                                    <span class="skill-name">Python</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="75%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">TensorFlow</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="70%"></div>
+                                    </div>
+                                </div>
+                                <div class="skill-item">
+                                    <span class="skill-name">机器学习</span>
+                                    <div class="skill-bar">
+                                        <div class="skill-progress" data-width="72%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 专业技能详细展示 -->
+                <div class="professional-skills">
+                    <h3 class="skills-section-title">专业技能详细评估</h3>
+                    <div class="skills-detailed-grid">
+                        <!-- 后端开发技能 -->
+                        <div class="skill-domain">
+                            <div class="domain-header">
+                                <div class="domain-icon">
+                                    <i class="fas fa-server"></i>
+                                </div>
+                                <h4 class="domain-title">后端开发</h4>
+                                <div class="domain-level expert">专家级</div>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Java</span>
+                                        <span class="skill-years">8年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">95%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Oracle认证</span>
+                                        <span class="cert-badge-small">Spring专家</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Spring生态</span>
+                                        <span class="skill-years">7年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span class="rating-text">90%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Spring认证</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">微服务架构</span>
+                                        <span class="skill-years">5年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">88%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">架构师认证</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 大数据技能 -->
+                        <div class="skill-domain">
+                            <div class="domain-header">
+                                <div class="domain-icon">
+                                    <i class="fas fa-database"></i>
+                                </div>
+                                <h4 class="domain-title">大数据技术</h4>
+                                <div class="domain-level advanced">高级</div>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Hadoop生态</span>
+                                        <span class="skill-years">6年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">85%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Cloudera认证</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Apache Spark</span>
+                                        <span class="skill-years">5年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">82%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Spark专家</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">实时流处理</span>
+                                        <span class="skill-years">4年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">80%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Kafka认证</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- AI/机器学习技能 -->
+                        <div class="skill-domain">
+                            <div class="domain-header">
+                                <div class="domain-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <h4 class="domain-title">AI/机器学习</h4>
+                                <div class="domain-level intermediate">中高级</div>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Python</span>
+                                        <span class="skill-years">4年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">75%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">Python认证</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">深度学习</span>
+                                        <span class="skill-years">3年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">72%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">TensorFlow认证</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">大模型应用</span>
+                                        <span class="skill-years">2年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">70%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">AI工程师</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 云计算与DevOps -->
+                        <div class="skill-domain">
+                            <div class="domain-header">
+                                <div class="domain-icon">
+                                    <i class="fas fa-cloud"></i>
+                                </div>
+                                <h4 class="domain-title">云计算与DevOps</h4>
+                                <div class="domain-level advanced">高级</div>
+                            </div>
+                            <div class="skill-details">
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">阿里云</span>
+                                        <span class="skill-years">5年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">85%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">阿里云架构师</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">Docker/K8s</span>
+                                        <span class="skill-years">4年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">80%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">K8s认证</span>
+                                    </div>
+                                </div>
+                                <div class="skill-detail-item">
+                                    <div class="skill-info">
+                                        <span class="skill-name">CI/CD</span>
+                                        <span class="skill-years">5年经验</span>
+                                    </div>
+                                    <div class="skill-rating">
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="far fa-star"></i>
+                                        </div>
+                                        <span class="rating-text">82%</span>
+                                    </div>
+                                    <div class="skill-certifications">
+                                        <span class="cert-badge-small">DevOps专家</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 项目展示 -->
+        <section id="projects" class="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">核心项目成果</h2>
+                    <p class="section-subtitle">代表性技术项目与成果展示</p>
+                </div>
+                <div class="projects-grid">
+                    <!-- 西和水务智能监测管理平台 -->
+                    <div class="project-card featured">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-tint"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3 class="project-title">西和水务智能监测管理平台</h3>
+                                <span class="project-type">核心架构师 · 2024</span>
+                                <div class="project-badge">技术突破</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                <strong>技术突破：</strong>首创水务行业数字孪生监测体系，集成AI智能预警算法，实现全流程智能化管理。覆盖西汉水、碧玉河双水源取水枢纽，管理供水人口50万+，日处理水量100万吨。
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-brain"></i>
+                                    <span>AI智能预警系统，预测准确率达98.5%</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>零安全事故运行，获得水利部优秀案例</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">Spring Cloud</span>
+                                <span class="tech-tag">IoT物联网</span>
+                                <span class="tech-tag">AI预警算法</span>
+                                <span class="tech-tag">数字孪生</span>
+                                <span class="tech-tag">实时流处理</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">50万+</span>
+                                    <span class="stat-label">服务人口</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">98.5%</span>
+                                    <span class="stat-label">预警准确率</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">100万吨</span>
+                                    <span class="stat-label">日处理水量</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 鑫方盛数智科技数据中台 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3 class="project-title">企业级数据中台架构</h3>
+                                <span class="project-type">技术负责人 · 2023</span>
+                                <div class="project-badge">架构创新</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                <strong>架构创新：</strong>采用DDD领域驱动设计，构建企业级数据中台，打破数据孤岛，实现跨系统数据互联互通。支持PB级数据处理，为30+业务系统提供统一数据服务。
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-rocket"></i>
+                                    <span>数据处理效率提升400%，人效提升40%</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-coins"></i>
+                                    <span>助力公司收益同比增长16%，节省成本500万</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                 <span class="tech-tag">DDD架构</span>
+                                 <span class="tech-tag">Flink实时计算</span>
+                                 <span class="tech-tag">数据湖</span>
+                                 <span class="tech-tag">微服务</span>
+                                 <span class="tech-tag">DevOps</span>
+                             </div>
+                             <div class="project-stats">
+                                 <div class="stat">
+                                     <span class="stat-number">PB级</span>
+                                     <span class="stat-label">数据处理能力</span>
+                                 </div>
+                                 <div class="stat">
+                                     <span class="stat-number">400%</span>
+                                     <span class="stat-label">效率提升</span>
+                                 </div>
+                                 <div class="stat">
+                                     <span class="stat-number">30+</span>
+                                     <span class="stat-label">接入系统</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                    <!-- 慧采平台高并发优化 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3 class="project-title">慧采平台高并发架构优化</h3>
+                                <span class="project-type">性能优化专家 · 2023</span>
+                                <div class="project-badge">性能突破</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                <strong>性能突破：</strong>针对高并发场景进行系统级优化，重构第三方客户下单链路，支持万级并发。成功对接31家大型企业客户，实现营收突破7亿元大关。
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                    <span>系统性能提升60%，支持万级并发</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-trophy"></i>
+                                    <span>获评2023年Q3优秀员工，客户满意度99%</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">高并发优化</span>
+                                <span class="tech-tag">分布式缓存</span>
+                                <span class="tech-tag">消息队列</span>
+                                <span class="tech-tag">负载均衡</span>
+                                <span class="tech-tag">性能调优</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">10万+</span>
+                                    <span class="stat-label">并发用户</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">60%</span>
+                                    <span class="stat-label">性能提升</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">7亿</span>
+                                    <span class="stat-label">营收突破</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 绿盟SAS安全平台 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3 class="project-title">绿盟SAS网络安全平台</h3>
+                                <span class="project-type">核心开发 · 2019-2022</span>
+                                <div class="project-badge">安全创新</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                <strong>安全创新：</strong>参与绿盟科技核心安全产品开发，负责SAS平台定制化功能和数据接入优化。服务电力、通信、金融等关键行业，保障国家关键信息基础设施安全。
+                            </p>
+                            <div class="project-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>数据接入成功率从90%提升至99%</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>服务30+重点客户，客户满意度95%+</span>
+                                </div>
+                            </div>
+                            <div class="tech-stack">
+                                <span class="tech-tag">网络安全</span>
+                                <span class="tech-tag">大数据分析</span>
+                                <span class="tech-tag">威胁检测</span>
+                                <span class="tech-tag">实时监控</span>
+                                <span class="tech-tag">机器学习</span>
+                            </div>
+                            <div class="project-stats">
+                                <div class="stat">
+                                    <span class="stat-number">99%</span>
+                                    <span class="stat-label">接入成功率</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">30+</span>
+                                    <span class="stat-label">重点客户</span>
+                                </div>
+                                <div class="stat">
+                                    <span class="stat-number">95%+</span>
+                                    <span class="stat-label">客户满意度</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- AI智能体赋能平台 -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-robot"></i>
+                            </div>
+                            <div class="project-meta">
+                                <h3 class="project-title">企业AI智能体赋能平台</h3>
+                                <span class="project-type">AI架构师 · 2024</span>
+                                <div class="project-badge">AI创新</div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <p class="project-description">
+                                <strong>AI创新：</strong>主导构建企业级AI智能体矩阵，成功打造"元职宝""元制宝""元析宝""元书宝""元勤宝""元财宝"六大智能体系列，实现企业全流程智能化赋能。
+                             </p>
+                             <div class="project-highlights">
+                                 <div class="highlight-item">
+                                     <i class="fas fa-robot"></i>
+                                     <span>6大智能体系列，覆盖企业全业务场景</span>
+                                 </div>
+                                 <div class="highlight-item">
+                                     <i class="fas fa-chart-line"></i>
+                                     <span>企业运营效率提升80%，决策准确率95%</span>
+                                 </div>
+                             </div>
+                             <div class="tech-stack">
+                                 <span class="tech-tag">Spring-AI</span>
+                                 <span class="tech-tag">Langchain4J</span>
+                                 <span class="tech-tag">大模型训练</span>
+                                 <span class="tech-tag">智能工作流</span>
+                                 <span class="tech-tag">知识图谱</span>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+         <!-- 项目经验详细展示 -->
+         <section class="project-experience">
+             <div class="container">
+                 <div class="section-header">
+                     <h2 class="section-title">项目经验深度解析</h2>
+                     <p class="section-subtitle">深入展示技术挑战、解决方案与个人贡献</p>
+                 </div>
+                 
+                 <div class="experience-timeline">
+                     <!-- 西和水务项目详细经验 -->
+                     <div class="experience-item">
+                         <div class="experience-header">
+                             <div class="experience-icon">
+                                 <i class="fas fa-tint"></i>
+                             </div>
+                             <div class="experience-meta">
+                                 <h3 class="experience-title">西和水务智能监测管理平台</h3>
+                                 <span class="experience-role">核心架构师 & 技术负责人</span>
+                                 <span class="experience-period">2024年3月 - 2024年12月</span>
+                             </div>
+                         </div>
+                         
+                         <div class="experience-content">
+                             <div class="challenge-section">
+                                 <h4><i class="fas fa-exclamation-triangle"></i> 技术挑战</h4>
+                                 <ul class="challenge-list">
+                                     <li>传统水务监测系统数据孤岛严重，缺乏统一的数据标准和接口规范</li>
+                                     <li>海量IoT设备数据实时处理，需要支持每秒10万+数据点的高并发写入</li>
+                                     <li>水质异常预警算法准确率低，误报率高达30%，影响运营决策</li>
+                                     <li>系统可用性要求99.9%，需要构建高可用的分布式架构</li>
+                                 </ul>
+                             </div>
+                             
+                             <div class="solution-section">
+                                 <h4><i class="fas fa-lightbulb"></i> 解决方案</h4>
+                                 <div class="solution-grid">
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-sitemap"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>微服务架构设计</h5>
+                                             <p>采用Spring Cloud微服务架构，设计了数据采集、处理、分析、预警四大核心服务模块，实现服务解耦和独立部署</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-database"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>实时数据处理</h5>
+                                             <p>基于Kafka+Flink构建实时数据流处理管道，支持每秒10万+数据点处理，延迟控制在100ms内</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-brain"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>AI智能预警算法</h5>
+                                             <p>基于机器学习算法，结合历史数据和实时监测，构建水质异常预警模型，准确率提升至98.5%</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-shield-alt"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>高可用架构</h5>
+                                             <p>采用多活部署、熔断降级、限流保护等策略，确保系统99.9%可用性，支持故障自动恢复</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             
+                             <div class="contribution-section">
+                                 <h4><i class="fas fa-user-cog"></i> 个人贡献</h4>
+                                 <div class="contribution-stats">
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">85%</div>
+                                         <div class="contribution-label">核心代码贡献</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">15+</div>
+                                         <div class="contribution-label">技术方案设计</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">50+</div>
+                                         <div class="contribution-label">技术文档编写</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">8人</div>
+                                         <div class="contribution-label">团队技术指导</div>
+                                     </div>
+                                 </div>
+                                 <div class="contribution-details">
+                                     <div class="detail-item">
+                                         <i class="fas fa-code"></i>
+                                         <span>独立完成核心算法模块开发，编写高质量代码15万+行</span>
+                                     </div>
+                                     <div class="detail-item">
+                                         <i class="fas fa-chart-line"></i>
+                                         <span>主导性能优化，系统响应时间从2s优化至200ms</span>
+                                     </div>
+                                     <div class="detail-item">
+                                         <i class="fas fa-users"></i>
+                                         <span>指导团队成员技术成长，建立代码评审和技术分享机制</span>
+                                     </div>
+                                 </div>
+                             </div>
+                             
+                             <div class="results-section">
+                                 <h4><i class="fas fa-trophy"></i> 项目成果</h4>
+                                 <div class="results-grid">
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-award"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>行业认可</h5>
+                                             <p>获得水利部优秀案例奖，成为行业标杆项目</p>
+                                         </div>
+                                     </div>
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-chart-bar"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>运营效果</h5>
+                                             <p>系统稳定运行300+天，零安全事故，服务50万+人口</p>
+                                         </div>
+                                     </div>
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-coins"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>经济效益</h5>
+                                             <p>降低运营成本40%，提升水质监测效率300%</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                     
+                     <!-- 数据中台项目详细经验 -->
+                     <div class="experience-item">
+                         <div class="experience-header">
+                             <div class="experience-icon">
+                                 <i class="fas fa-database"></i>
+                             </div>
+                             <div class="experience-meta">
+                                 <h3 class="experience-title">企业级数据中台架构</h3>
+                                 <span class="experience-role">技术负责人 & 架构师</span>
+                                 <span class="experience-period">2023年6月 - 2024年2月</span>
+                             </div>
+                         </div>
+                         
+                         <div class="experience-content">
+                             <div class="challenge-section">
+                                 <h4><i class="fas fa-exclamation-triangle"></i> 技术挑战</h4>
+                                 <ul class="challenge-list">
+                                     <li>30+业务系统数据孤岛，数据标准不统一，质量参差不齐</li>
+                                     <li>PB级数据处理需求，传统ETL工具性能瓶颈明显</li>
+                                     <li>实时数据分析要求，需要秒级响应的OLAP查询能力</li>
+                                     <li>多租户数据隔离，确保数据安全和权限管控</li>
+                                 </ul>
+                             </div>
+                             
+                             <div class="solution-section">
+                                 <h4><i class="fas fa-lightbulb"></i> 解决方案</h4>
+                                 <div class="solution-grid">
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-layer-group"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>DDD架构设计</h5>
+                                             <p>采用领域驱动设计，构建数据采集、治理、服务、应用四层架构，实现业务与技术解耦</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-stream"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>实时计算引擎</h5>
+                                             <p>基于Flink构建流批一体的数据处理引擎，支持PB级数据实时处理和分析</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-hdd"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>数据湖架构</h5>
+                                             <p>构建基于Delta Lake的数据湖，支持ACID事务，实现数据版本管理和时间旅行</p>
+                                         </div>
+                                     </div>
+                                     <div class="solution-item">
+                                         <div class="solution-icon">
+                                             <i class="fas fa-lock"></i>
+                                         </div>
+                                         <div class="solution-content">
+                                             <h5>安全权限体系</h5>
+                                             <p>基于RBAC模型，实现细粒度权限控制，支持行级、列级数据安全策略</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                             
+                             <div class="contribution-section">
+                                 <h4><i class="fas fa-user-cog"></i> 个人贡献</h4>
+                                 <div class="contribution-stats">
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">90%</div>
+                                         <div class="contribution-label">架构设计贡献</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">20+</div>
+                                         <div class="contribution-label">核心组件开发</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">100+</div>
+                                         <div class="contribution-label">技术标准制定</div>
+                                     </div>
+                                     <div class="contribution-item">
+                                         <div class="contribution-number">12人</div>
+                                         <div class="contribution-label">团队管理规模</div>
+                                     </div>
+                                 </div>
+                                 <div class="contribution-details">
+                                     <div class="detail-item">
+                                         <i class="fas fa-drafting-compass"></i>
+                                         <span>主导整体架构设计，制定技术选型和实施路线图</span>
+                                     </div>
+                                     <div class="detail-item">
+                                         <i class="fas fa-cogs"></i>
+                                         <span>开发核心数据处理引擎，实现400%性能提升</span>
+                                     </div>
+                                     <div class="detail-item">
+                                         <i class="fas fa-graduation-cap"></i>
+                                         <span>建立技术培训体系，提升团队整体技术水平</span>
+                                     </div>
+                                 </div>
+                             </div>
+                             
+                             <div class="results-section">
+                                 <h4><i class="fas fa-trophy"></i> 项目成果</h4>
+                                 <div class="results-grid">
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-rocket"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>性能突破</h5>
+                                             <p>数据处理效率提升400%，查询响应时间从分钟级优化至秒级</p>
+                                         </div>
+                                     </div>
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-handshake"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>业务价值</h5>
+                                             <p>支撑30+业务系统，助力公司收益同比增长16%</p>
+                                         </div>
+                                     </div>
+                                     <div class="result-card">
+                                         <div class="result-icon">
+                                             <i class="fas fa-piggy-bank"></i>
+                                         </div>
+                                         <div class="result-content">
+                                             <h5>成本优化</h5>
+                                             <p>降低数据处理成本60%，节省运营成本500万元</p>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+         <!-- 能力评估图表 -->
+         <section class="ability-assessment">
+             <div class="container">
+                 <div class="section-header">
+                     <h2 class="section-title">
+                         <i class="fas fa-chart-radar"></i>
+                         能力评估图表
+                     </h2>
+                     <p class="section-subtitle">可视化展示核心能力分布与行业标准对比</p>
+                 </div>
+
+                 <!-- 核心能力雷达图 -->
+                 <div class="assessment-grid">
+                     <div class="radar-chart-container">
+                         <h3 class="chart-title">
+                             <i class="fas fa-bullseye"></i>
+                             核心能力分布
+                         </h3>
+                         <div class="radar-chart" id="coreAbilityRadar">
+                             <canvas id="radarCanvas" width="400" height="400"></canvas>
+                             <div class="radar-legend">
+                                 <div class="legend-item">
+                                     <span class="legend-color" style="background: #06b6d4;"></span>
+                                     <span class="legend-label">当前水平</span>
+                                 </div>
+                                 <div class="legend-item">
+                                     <span class="legend-color" style="background: #8b5cf6;"></span>
+                                     <span class="legend-label">行业标准</span>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+
+                     <!-- 能力详细评分 -->
+                     <div class="ability-scores">
+                         <h3 class="chart-title">
+                             <i class="fas fa-star"></i>
+                             能力详细评分
+                         </h3>
+                         <div class="score-items">
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">后端架构设计</span>
+                                     <span class="score-value">95/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 95%;" data-score="95"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 25%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">大数据处理</span>
+                                     <span class="score-value">92/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 92%;" data-score="92"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 22%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">AI/机器学习</span>
+                                     <span class="score-value">88/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 88%;" data-score="88"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 18%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">云计算DevOps</span>
+                                     <span class="score-value">90/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 90%;" data-score="90"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 20%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">团队协作</span>
+                                     <span class="score-value">94/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 94%;" data-score="94"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 24%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+
+                             <div class="score-item">
+                                 <div class="score-header">
+                                     <span class="ability-name">问题解决</span>
+                                     <span class="score-value">96/100</span>
+                                 </div>
+                                 <div class="score-bar">
+                                     <div class="score-progress" style="width: 96%;" data-score="96"></div>
+                                 </div>
+                                 <div class="score-comparison">
+                                     <span class="comparison-text">超出行业平均 26%</span>
+                                     <i class="fas fa-arrow-up comparison-icon up"></i>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- 行业对比分析 -->
+                 <div class="industry-comparison">
+                     <h3 class="chart-title">
+                         <i class="fas fa-balance-scale"></i>
+                         行业对比分析
+                     </h3>
+                     <div class="comparison-grid">
+                         <div class="comparison-item">
+                             <div class="comparison-header">
+                                 <h4>技术深度</h4>
+                                 <span class="comparison-score">Top 5%</span>
+                             </div>
+                             <div class="comparison-bar">
+                                 <div class="comparison-progress" style="width: 95%;">
+                                     <span class="progress-label">95%</span>
+                                 </div>
+                             </div>
+                             <p class="comparison-desc">在后端架构和大数据领域具有深厚的技术功底</p>
+                         </div>
+
+                         <div class="comparison-item">
+                             <div class="comparison-header">
+                                 <h4>项目经验</h4>
+                                 <span class="comparison-score">Top 10%</span>
+                             </div>
+                             <div class="comparison-bar">
+                                 <div class="comparison-progress" style="width: 90%;">
+                                     <span class="progress-label">90%</span>
+                                 </div>
+                             </div>
+                             <p class="comparison-desc">丰富的大型项目实战经验和成功案例</p>
+                         </div>
+
+                         <div class="comparison-item">
+                             <div class="comparison-header">
+                                 <h4>学习能力</h4>
+                                 <span class="comparison-score">Top 3%</span>
+                             </div>
+                             <div class="comparison-bar">
+                                 <div class="comparison-progress" style="width: 97%;">
+                                     <span class="progress-label">97%</span>
+                                 </div>
+                             </div>
+                             <p class="comparison-desc">快速掌握新技术，持续自我提升</p>
+                         </div>
+
+                         <div class="comparison-item">
+                             <div class="comparison-header">
+                                 <h4>创新思维</h4>
+                                 <span class="comparison-score">Top 8%</span>
+                             </div>
+                             <div class="comparison-bar">
+                                 <div class="comparison-progress" style="width: 92%;">
+                                     <span class="progress-label">92%</span>
+                                 </div>
+                             </div>
+                             <p class="comparison-desc">善于运用创新方案解决复杂技术问题</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+
+         <!-- 联系方式 -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">联系我</h2>
+                    <p class="section-subtitle">期待与您探讨技术合作机会</p>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>邮箱</h3>
+                                <p>tech.expert@example.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>GitHub</h3>
+                                <p>github.com/techexpert</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>LinkedIn</h3>
+                                <p>linkedin.com/in/techexpert</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-cta">
+                        <h3>寻找技术合作伙伴？</h3>
+                        <p>我正在寻找具有挑战性的技术项目和团队合作机会。如果您有以下需求：</p>
+                        <ul>
+                            <li>大型系统架构设计与优化</li>
+                            <li>大数据平台建设与运维</li>
+                            <li>AI/机器学习项目实施</li>
+                            <li>技术团队建设与管理</li>
+                        </ul>
+                        <p>欢迎与我联系，让我们一起创造技术价值！</p>
+                        <a href="mailto:tech.expert@example.com" class="btn btn-primary">立即联系</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2024 TechExpert. 专业技术能力展示平台</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
