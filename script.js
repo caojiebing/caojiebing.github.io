@@ -21,8 +21,12 @@ function initializeApp() {
     setupTypingEffect();
     setupScrollEffects();
     setupSkillsRadarChart();
+    setupCoreAbilityRadarChart();
+    setupAbilityScoreAnimations();
     setupSkillBars();
+    setupChartConfigPanel();
     setupBackToTop();
+
     setupParallaxEffect();
     setupScrollAnimations();
     setupMobileMenu();
@@ -167,7 +171,7 @@ function setupSkillsRadarChart() {
     const canvas = document.getElementById('skillsRadar');
     if (!canvas) return;
     
-    const ctx = canvas.getContext('2d');
+    let ctx = canvas.getContext('2d');
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const radius = 150;
@@ -782,4 +786,955 @@ function initPerformanceMonitoring() {
 // 初始化性能监控（仅在开发环境）
 if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
     initPerformanceMonitoring();
+}
+
+/**
+ * 设置核心能力评估雷达图
+ * 使用Canvas绘制能力评估雷达图，支持动画和交互
+ */
+function setupCoreAbilityRadarChart() {
+    try {
+        const canvas = document.getElementById('radarCanvas');
+        if (!canvas) {
+            console.warn('雷达图画布元素未找到');
+            return;
+        }
+        
+        // 检查浏览器支持
+        if (!canvas.getContext) {
+            console.error('浏览器不支持Canvas');
+            return;
+        }   
+    let ctx = canvas.getContext('2d');
+    let animationProgress = 0;
+    let isAnimating = false;
+    let hoveredIndex = -1;
+    
+    /**
+     * 获取默认配置（当配置管理器不可用时）
+     */
+    function getDefaultConfig() {
+        return {
+            chart: { width: 400, height: 400 },
+            radar: { 
+                levels: 5, 
+                maxValue: 100, 
+                showGrid: true, 
+                showLabels: true, 
+                showLegend: true,
+                lineWidth: 2,
+                pointRadius: 4
+            },
+            labels: ['技术架构', '团队协作', '项目管理', '创新思维', '学习能力', '业务理解'],
+            series: [{ 
+                color: '#06b6d4', 
+                fillColor: 'rgba(6, 182, 212, 0.2)',
+                pointColor: '#06b6d4',
+                name: '当前能力' 
+            }],
+            animation: { 
+                enableEntryAnimation: true, 
+                entryDelay: 100,
+                updateDuration: 2000 
+            }
+        };
+    }
+    
+    // 获取配置
+    const configManager = window.ChartConfigManager ? new ChartConfigManager() : null;
+    const config = configManager ? configManager.getConfig() : getDefaultConfig();
+    
+    // 确保配置完整性
+    if (!config.series || !Array.isArray(config.series) || config.series.length === 0) {
+        config.series = [{ color: '#06b6d4', name: '当前能力' }];
+    }
+    if (!config.labels || !Array.isArray(config.labels)) {
+        config.labels = ['技术架构', '团队协作', '项目管理', '创新思维', '学习能力', '业务理解'];
+    }
+    
+    // 核心能力数据 - 使用配置中的标签
+    const abilities = config.labels.map((label, index) => {
+        const defaultValues = [92, 88, 85, 90, 95, 82];
+        return {
+            name: label,
+            value: defaultValues[index] || 80,
+            description: `${label}相关能力`
+        };
+    });
+    
+    // 颜色配置 - 使用配置中的颜色
+    const colors = {
+        grid: 'rgba(59, 130, 246, 0.15)',
+        gridHighlight: 'rgba(59, 130, 246, 0.3)',
+        axis: 'rgba(59, 130, 246, 0.4)',
+        data: config.series[0]?.color || '#06b6d4',
+        dataFill: config.series[0]?.fillColor || 
+            (config.series[0]?.color ? 
+                config.series[0].color.replace('rgb', 'rgba').replace(')', ', 0.2)') : 
+                'rgba(6, 182, 212, 0.2)'),
+        dataHover: '#0891b2',
+        dataFillHover: 'rgba(8, 145, 178, 0.3)',
+        text: '#e2e8f0',
+        textHighlight: '#ffffff',
+        point: config.series[0]?.pointColor || config.series[0]?.color || '#06b6d4',
+        pointHover: '#0891b2'
+    };
+    
+    /**
+     * 初始化画布尺寸
+     */
+    function initCanvas() {
+        const container = canvas.parentElement;
+        const containerRect = container.getBoundingClientRect();
+        const size = Math.min(containerRect.width - 40, 400); // 减去padding
+        
+        // 设置画布显示尺寸
+        canvas.style.width = size + 'px';
+        canvas.style.height = size + 'px';
+        
+        // 设置高DPI支持
+        const dpr = window.devicePixelRatio || 1;
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        
+        // 重新获取上下文并设置缩放
+        const newCtx = canvas.getContext('2d');
+        newCtx.scale(dpr, dpr);
+        
+        // 设置画布样式
+        newCtx.imageSmoothingEnabled = true;
+        newCtx.imageSmoothingQuality = 'high';
+        
+        return newCtx;
+    }
+    
+    /**
+     * 绘制雷达图
+     */
+    function drawRadarChart() {
+        const centerX = canvas.width / (window.devicePixelRatio || 1) / 2;
+        const centerY = canvas.height / (window.devicePixelRatio || 1) / 2;
+        const radius = Math.min(centerX, centerY) - 60;
+        
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // 绘制网格
+        drawGrid(centerX, centerY, radius);
+        
+        // 绘制轴线和标签
+        drawAxes(centerX, centerY, radius);
+        
+        // 绘制数据
+        drawData(centerX, centerY, radius);
+        
+        // 绘制数据点
+        drawDataPoints(centerX, centerY, radius);
+    }
+    
+    /**
+     * 绘制网格
+     */
+    function drawGrid(centerX, centerY, radius) {
+        const levels = config.radar.levels;
+        
+        for (let i = 1; i <= levels; i++) {
+            const levelRadius = (radius / levels) * i;
+            
+            ctx.beginPath();
+            ctx.strokeStyle = i === levels ? colors.gridHighlight : colors.grid;
+            ctx.lineWidth = i === levels ? 2 : 1;
+            
+            // 绘制多边形网格
+            for (let j = 0; j < abilities.length; j++) {
+                const angle = (j * 2 * Math.PI) / abilities.length - Math.PI / 2;
+                const x = centerX + Math.cos(angle) * levelRadius;
+                const y = centerY + Math.sin(angle) * levelRadius;
+                
+                if (j === 0) {
+                    ctx.moveTo(x, y);
+                } else {
+                    ctx.lineTo(x, y);
+                }
+            }
+            ctx.closePath();
+            ctx.stroke();
+            
+            // 绘制等级标签
+            if (i === levels) {
+                ctx.fillStyle = colors.text;
+                ctx.font = '10px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText(`${i * 20}%`, centerX + levelRadius, centerY - 5);
+            }
+        }
+    }
+    
+    /**
+     * 绘制轴线和标签
+     */
+    function drawAxes(centerX, centerY, radius) {
+        abilities.forEach((ability, index) => {
+            const angle = (index * 2 * Math.PI) / abilities.length - Math.PI / 2;
+            const x = centerX + Math.cos(angle) * radius;
+            const y = centerY + Math.sin(angle) * radius;
+            
+            // 绘制轴线
+            ctx.beginPath();
+            ctx.strokeStyle = colors.axis;
+            ctx.lineWidth = 1;
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            
+            // 绘制标签
+            const isHighlighted = hoveredIndex === index;
+            ctx.fillStyle = isHighlighted ? colors.textHighlight : colors.text;
+            ctx.font = isHighlighted ? 'bold 13px Inter' : '12px Inter';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            
+            const labelDistance = radius + 25;
+            const labelX = centerX + Math.cos(angle) * labelDistance;
+            const labelY = centerY + Math.sin(angle) * labelDistance;
+            
+            // 多行文本处理
+            const words = ability.name.split('');
+            if (words.length > 2) {
+                ctx.fillText(words.slice(0, 2).join(''), labelX, labelY - 6);
+                ctx.fillText(words.slice(2).join(''), labelX, labelY + 6);
+            } else {
+                ctx.fillText(ability.name, labelX, labelY);
+            }
+            
+            // 绘制数值标签
+            if (isHighlighted) {
+                ctx.font = '11px Inter';
+                ctx.fillStyle = colors.data;
+                ctx.fillText(`${ability.value}%`, labelX, labelY + 18);
+            }
+        });
+    }
+    
+    /**
+     * 绘制数据区域
+     */
+    function drawData(centerX, centerY, radius) {
+        ctx.beginPath();
+        ctx.strokeStyle = hoveredIndex >= 0 ? colors.dataHover : colors.data;
+        ctx.fillStyle = hoveredIndex >= 0 ? colors.dataFillHover : colors.dataFill;
+        ctx.lineWidth = 3;
+        ctx.lineJoin = 'round';
+        
+        abilities.forEach((ability, index) => {
+            const angle = (index * 2 * Math.PI) / abilities.length - Math.PI / 2;
+            const value = (ability.value / 100) * radius * animationProgress;
+            const x = centerX + Math.cos(angle) * value;
+            const y = centerY + Math.sin(angle) * value;
+            
+            if (index === 0) {
+                ctx.moveTo(x, y);
+            } else {
+                ctx.lineTo(x, y);
+            }
+        });
+        
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+    }
+    
+    /**
+     * 绘制数据点
+     */
+    function drawDataPoints(centerX, centerY, radius) {
+        abilities.forEach((ability, index) => {
+            const angle = (index * 2 * Math.PI) / abilities.length - Math.PI / 2;
+            const value = (ability.value / 100) * radius * animationProgress;
+            const x = centerX + Math.cos(angle) * value;
+            const y = centerY + Math.sin(angle) * value;
+            
+            const isHighlighted = hoveredIndex === index;
+            const pointRadius = isHighlighted ? config.radar.pointRadius + 2 : config.radar.pointRadius;
+            
+            // 绘制数据点
+            ctx.beginPath();
+            ctx.fillStyle = isHighlighted ? colors.pointHover : colors.point;
+            ctx.arc(x, y, pointRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // 绘制点的外圈
+            if (isHighlighted) {
+                ctx.beginPath();
+                ctx.strokeStyle = colors.pointHover;
+                ctx.lineWidth = 2;
+                ctx.arc(x, y, pointRadius + 3, 0, 2 * Math.PI);
+                ctx.stroke();
+            }
+        });
+    }
+    
+    /**
+     * 启动动画
+     */
+    function startAnimation() {
+        if (isAnimating || !config.animation?.enableEntryAnimation) return;
+        
+        isAnimating = true;
+        animationProgress = 0;
+        const duration = config.animation?.updateDuration || 2000;
+        const animationSpeed = 1 / (duration * 60 / 1000); // 基于60fps计算
+        let lastTime = performance.now();
+        
+        function animate(currentTime) {
+            const deltaTime = currentTime - lastTime;
+            
+            // 限制帧率，避免过度渲染
+            if (deltaTime < 16.67) { // 约60fps
+                requestAnimationFrame(animate);
+                return;
+            }
+            
+            lastTime = currentTime;
+            animationProgress += animationSpeed * (deltaTime / 16.67);
+            
+            if (animationProgress >= 1) {
+                animationProgress = 1;
+                isAnimating = false;
+            }
+            
+            // 使用缓动函数
+            const easeProgress = easeOutCubic(animationProgress);
+            const tempProgress = animationProgress;
+            animationProgress = easeProgress;
+            
+            // 只在需要时重绘
+            drawRadarChart();
+            
+            animationProgress = tempProgress;
+            
+            if (isAnimating) {
+                requestAnimationFrame(animate);
+            }
+        }
+        
+        requestAnimationFrame(animate);
+    }
+    
+    /**
+     * 缓动函数
+     */
+    function easeOutCubic(t) {
+        return 1 - Math.pow(1 - t, 3);
+    }
+    
+    /**
+     * 获取鼠标位置相对于画布的坐标
+     */
+    function getMousePos(e) {
+        const rect = canvas.getBoundingClientRect();
+        return {
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        };
+    }
+    
+    /**
+     * 检测鼠标是否悬停在数据点上
+     */
+    function detectHover(mousePos) {
+        const centerX = canvas.width / (window.devicePixelRatio || 1) / 2;
+        const centerY = canvas.height / (window.devicePixelRatio || 1) / 2;
+        const radius = Math.min(centerX, centerY) - 60;
+        
+        let newHoveredIndex = -1;
+        
+        abilities.forEach((ability, index) => {
+            const angle = (index * 2 * Math.PI) / abilities.length - Math.PI / 2;
+            const value = (ability.value / 100) * radius;
+            const x = centerX + Math.cos(angle) * value;
+            const y = centerY + Math.sin(angle) * value;
+            
+            const distance = Math.sqrt(
+                Math.pow(mousePos.x - x, 2) + Math.pow(mousePos.y - y, 2)
+            );
+            
+            if (distance <= 15) {
+                newHoveredIndex = index;
+            }
+        });
+        
+        if (newHoveredIndex !== hoveredIndex) {
+            hoveredIndex = newHoveredIndex;
+            drawRadarChart();
+            
+            // 更新工具提示
+            updateTooltip(mousePos, newHoveredIndex);
+        }
+    }
+    
+    /**
+     * 更新工具提示
+     */
+    function updateTooltip(mousePos, index) {
+        let tooltip = document.getElementById('radar-tooltip');
+        
+        if (index >= 0) {
+            if (!tooltip) {
+                tooltip = document.createElement('div');
+                tooltip.id = 'radar-tooltip';
+                tooltip.className = 'radar-tooltip';
+                document.body.appendChild(tooltip);
+            }
+            
+            const ability = abilities[index];
+            tooltip.innerHTML = `
+                <div class="tooltip-title">${ability.name}</div>
+                <div class="tooltip-value">${ability.value}%</div>
+                <div class="tooltip-description">${ability.description || '核心技术能力'}</div>
+            `;
+            
+            const rect = canvas.getBoundingClientRect();
+            const scrollX = window.pageXOffset || document.documentElement.scrollLeft;
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            
+            tooltip.style.left = (rect.left + scrollX + mousePos.x + 15) + 'px';
+            tooltip.style.top = (rect.top + scrollY + mousePos.y - 15) + 'px';
+            
+            // 使用CSS类来显示工具提示
+            tooltip.classList.add('show');
+        } else if (tooltip) {
+            tooltip.classList.remove('show');
+        }
+    }
+    
+    /**
+     * 响应式调整
+     */
+    function resizeCanvas() {
+        ctx = initCanvas();
+        drawRadarChart();
+    }
+    
+    // 事件监听器 - 使用节流优化性能
+    canvas.addEventListener('mousemove', throttle((e) => {
+        const mousePos = getMousePos(e);
+        detectHover(mousePos);
+    }, 16)); // 约60fps的更新频率
+    
+    canvas.addEventListener('mouseleave', () => {
+        hoveredIndex = -1;
+        drawRadarChart();
+        updateTooltip({}, -1);
+    });
+    
+    window.addEventListener('resize', throttle(resizeCanvas, 250));
+    
+    // 初始化
+    ctx = initCanvas();
+    
+    // 使用Intersection Observer来触发动画
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !isAnimating) {
+                startAnimation();
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    observer.observe(canvas.parentElement);
+    
+    } catch (error) {
+        console.error('雷达图初始化失败:', error);
+        // 显示备用内容或错误信息
+        const container = document.querySelector('.radar-chart-container');
+        if (container) {
+            container.innerHTML = '<p style="text-align: center; color: #666;">图表加载失败，请刷新页面重试</p>';
+        }
+    }
+}
+
+/**
+ * 更新能力评估分数动画
+ * 为分数条添加动画效果
+ */
+function setupAbilityScoreAnimations() {
+    const scoreItems = document.querySelectorAll('.score-item');
+    
+    function animateScores() {
+        scoreItems.forEach((item, index) => {
+            const progressBar = item.querySelector('.score-progress');
+            const scoreValue = item.querySelector('.score-value');
+            
+            if (progressBar && scoreValue) {
+                const targetWidth = progressBar.getAttribute('data-width') || '0%';
+                const targetValue = parseInt(targetWidth);
+                
+                setTimeout(() => {
+                    // 动画进度条
+                    progressBar.style.transition = 'width 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                    progressBar.style.width = targetWidth;
+                    
+                    // 动画数字
+                    animateNumber(scoreValue, 0, targetValue, 1500);
+                }, index * 200);
+            }
+        });
+    }
+    
+    // 使用Intersection Observer触发动画
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateScores();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    const abilitySection = document.querySelector('.ability-assessment');
+    if (abilitySection) {
+        observer.observe(abilitySection);
+    }
+}
+
+/**
+ * 数字动画函数
+ */
+function animateNumber(element, start, end, duration) {
+    const startTime = performance.now();
+    
+    function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // 使用缓动函数
+        const easeProgress = easeOutQuart(progress);
+        const current = Math.round(start + (end - start) * easeProgress);
+        
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(update);
+        }
+    }
+    
+    requestAnimationFrame(update);
+}
+
+/**
+ * 缓动函数 - easeOutQuart
+ */
+function easeOutQuart(t) {
+    return 1 - Math.pow(1 - t, 4);
+}
+
+/**
+ * 设置图表配置面板
+ * 提供图表的可定制化配置选项
+ */
+function setupChartConfigPanel() {
+    const configManager = new ChartConfigManager();
+    const configPanel = document.getElementById('chartConfigPanel');
+    const configToggle = document.getElementById('configToggle');
+    const closeBtn = configPanel?.querySelector('.config-close');
+    
+    if (!configPanel || !configToggle) return;
+    
+    // 初始化配置面板
+    initConfigPanel();
+    
+    // 绑定事件
+    configToggle.addEventListener('click', () => {
+        configPanel.classList.add('active');
+    });
+    
+    closeBtn?.addEventListener('click', () => {
+        configPanel.classList.remove('active');
+    });
+    
+    // 点击面板外部关闭
+    configPanel.addEventListener('click', (e) => {
+        if (e.target === configPanel) {
+            configPanel.classList.remove('active');
+        }
+    });
+    
+    // ESC键关闭
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && configPanel.classList.contains('active')) {
+            configPanel.classList.remove('active');
+        }
+    });
+    
+    /**
+     * 初始化配置面板
+     */
+    function initConfigPanel() {
+        const config = configManager.getConfig();
+        
+        // 初始化基础设置
+        initBasicSettings(config);
+        
+        // 初始化样式设置
+        initStyleSettings(config);
+        
+        // 初始化数据设置
+        initDataSettings(config);
+        
+        // 初始化动画设置
+        initAnimationSettings(config);
+        
+        // 绑定标签页切换
+        initTabSwitching();
+        
+        // 绑定操作按钮
+        initActionButtons();
+    }
+    
+    /**
+     * 初始化基础设置
+     */
+    function initBasicSettings(config) {
+        const chartWidth = document.getElementById('chartWidth');
+        const chartHeight = document.getElementById('chartHeight');
+        const radarLevels = document.getElementById('radarLevels');
+        const maxValue = document.getElementById('maxValue');
+        const showGrid = document.getElementById('showGrid');
+        const showLabels = document.getElementById('showLabels');
+        const showLegend = document.getElementById('showLegend');
+        
+        if (chartWidth) {
+            chartWidth.value = config.chart.width;
+            chartWidth.addEventListener('input', (e) => {
+                updateConfig('chart.width', parseInt(e.target.value));
+            });
+        }
+        
+        if (chartHeight) {
+            chartHeight.value = config.chart.height;
+            chartHeight.addEventListener('input', (e) => {
+                updateConfig('chart.height', parseInt(e.target.value));
+            });
+        }
+        
+        if (radarLevels) {
+            radarLevels.value = config.radar.levels;
+            radarLevels.addEventListener('input', (e) => {
+                updateConfig('radar.levels', parseInt(e.target.value));
+            });
+        }
+        
+        if (maxValue) {
+            maxValue.value = config.radar.maxValue;
+            maxValue.addEventListener('input', (e) => {
+                updateConfig('radar.maxValue', parseInt(e.target.value));
+            });
+        }
+        
+        if (showGrid) {
+            showGrid.checked = config.radar.showGrid;
+            showGrid.addEventListener('change', (e) => {
+                updateConfig('radar.showGrid', e.target.checked);
+            });
+        }
+        
+        if (showLabels) {
+            showLabels.checked = config.radar.showLabels;
+            showLabels.addEventListener('change', (e) => {
+                updateConfig('radar.showLabels', e.target.checked);
+            });
+        }
+        
+        if (showLegend) {
+            showLegend.checked = config.radar.showLegend;
+            showLegend.addEventListener('change', (e) => {
+                updateConfig('radar.showLegend', e.target.checked);
+            });
+        }
+    }
+    
+    /**
+     * 初始化样式设置
+     */
+    function initStyleSettings(config) {
+        // 主题选择
+        const themeButtons = document.querySelectorAll('.theme-btn');
+        themeButtons.forEach(btn => {
+            if (btn.dataset.theme === config.theme.current) {
+                btn.classList.add('active');
+            }
+            
+            btn.addEventListener('click', () => {
+                themeButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                configManager.applyTheme(btn.dataset.theme);
+                applyConfiguration();
+            });
+        });
+        
+        // 系列颜色
+        config.dataSeries.forEach((series, index) => {
+            const colorInput = document.getElementById(`seriesColor${index + 1}`);
+            if (colorInput) {
+                colorInput.value = series.color;
+                colorInput.addEventListener('input', (e) => {
+                    updateConfig(`dataSeries.${index}.color`, e.target.value);
+                });
+            }
+        });
+        
+        // 线条设置
+        const lineWidth = document.getElementById('lineWidth');
+        const pointRadius = document.getElementById('pointRadius');
+        
+        if (lineWidth) {
+            lineWidth.value = config.radar.lineWidth;
+            lineWidth.addEventListener('input', (e) => {
+                updateConfig('radar.lineWidth', parseInt(e.target.value));
+            });
+        }
+        
+        if (pointRadius) {
+            pointRadius.value = config.radar.pointRadius;
+            pointRadius.addEventListener('input', (e) => {
+                updateConfig('radar.pointRadius', parseInt(e.target.value));
+            });
+        }
+    }
+    
+    /**
+     * 初始化数据设置
+     */
+    function initDataSettings(config) {
+        const labelsList = document.getElementById('labelsList');
+        if (!labelsList) return;
+        
+        function renderLabels() {
+            labelsList.innerHTML = '';
+            config.labels.forEach((label, index) => {
+                const labelItem = document.createElement('div');
+                labelItem.className = 'label-item';
+                labelItem.innerHTML = `
+                    <input type="text" value="${label}" data-index="${index}">
+                    <button type="button" class="remove-label" data-index="${index}">删除</button>
+                `;
+                labelsList.appendChild(labelItem);
+            });
+        }
+        
+        renderLabels();
+        
+        // 绑定标签编辑事件
+        labelsList.addEventListener('input', (e) => {
+            if (e.target.type === 'text') {
+                const index = parseInt(e.target.dataset.index);
+                const newLabels = [...config.labels];
+                newLabels[index] = e.target.value;
+                updateConfig('labels', newLabels);
+            }
+        });
+        
+        // 绑定删除标签事件
+        labelsList.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-label')) {
+                const index = parseInt(e.target.dataset.index);
+                const newLabels = config.labels.filter((_, i) => i !== index);
+                updateConfig('labels', newLabels);
+                renderLabels();
+            }
+        });
+        
+        // 添加标签按钮
+        const addLabelBtn = document.getElementById('addLabel');
+        if (addLabelBtn) {
+            addLabelBtn.addEventListener('click', () => {
+                const newLabels = [...config.labels, '新能力'];
+                updateConfig('labels', newLabels);
+                renderLabels();
+            });
+        }
+    }
+    
+    /**
+     * 初始化动画设置
+     */
+    function initAnimationSettings(config) {
+        const enableAnimations = document.getElementById('enableAnimations');
+        const animationDuration = document.getElementById('animationDuration');
+        
+        if (enableAnimations) {
+            enableAnimations.checked = config.animation?.enableEntryAnimation || true;
+            enableAnimations.addEventListener('change', (e) => {
+                updateConfig('animation.enableEntryAnimation', e.target.checked);
+            });
+        }
+        
+        if (animationDuration) {
+            animationDuration.value = config.animation?.updateDuration || 2000;
+            animationDuration.addEventListener('input', (e) => {
+                updateConfig('animation.updateDuration', parseInt(e.target.value));
+            });
+        }
+    }
+    
+    /**
+     * 初始化标签页切换
+     */
+    function initTabSwitching() {
+        const tabButtons = document.querySelectorAll('.config-tab');
+        const tabContents = document.querySelectorAll('.config-content');
+        
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+                
+                // 切换按钮状态
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                
+                // 切换内容显示
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `${targetTab}Settings`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        });
+    }
+    
+    /**
+     * 初始化操作按钮
+     */
+    function initActionButtons() {
+        const resetBtn = document.getElementById('resetConfig');
+        const exportBtn = document.getElementById('exportConfig');
+        const importBtn = document.getElementById('importConfig');
+        const applyBtn = document.getElementById('applyConfig');
+        const importFile = document.getElementById('importFile');
+        
+        // 重置配置
+        if (resetBtn) {
+            resetBtn.addEventListener('click', () => {
+                if (confirm('确定要重置所有配置吗？')) {
+                    configManager.resetToDefault();
+                    initConfigPanel();
+                    applyConfiguration();
+                }
+            });
+        }
+        
+        // 导出配置
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                const config = configManager.getConfig();
+                const dataStr = JSON.stringify(config, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = 'chart-config.json';
+                link.click();
+                
+                URL.revokeObjectURL(url);
+            });
+        }
+        
+        // 导入配置
+        if (importBtn && importFile) {
+            importBtn.addEventListener('click', () => {
+                importFile.click();
+            });
+            
+            importFile.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        try {
+                            const config = JSON.parse(event.target.result);
+                            configManager.updateConfig(config);
+                            initConfigPanel();
+                            applyConfiguration();
+                            alert('配置导入成功！');
+                        } catch (error) {
+                            alert('配置文件格式错误！');
+                        }
+                    };
+                    reader.readAsText(file);
+                }
+            });
+        }
+        
+        // 应用配置
+        if (applyBtn) {
+            applyBtn.addEventListener('click', () => {
+                applyConfiguration();
+                configPanel.classList.remove('active');
+            });
+        }
+    }
+    
+    /**
+     * 更新配置
+     */
+    function updateConfig(path, value) {
+        const pathArray = path.split('.');
+        const config = configManager.getConfig();
+        
+        let current = config;
+        for (let i = 0; i < pathArray.length - 1; i++) {
+            current = current[pathArray[i]];
+        }
+        current[pathArray[pathArray.length - 1]] = value;
+        
+        configManager.updateConfig(config);
+    }
+    
+    /**
+     * 应用配置到图表
+     */
+    function applyConfiguration() {
+        // 重新初始化雷达图
+        setupCoreAbilityRadarChart();
+        
+        // 重新初始化分数动画
+        setupAbilityScoreAnimations();
+        
+        // 重新初始化交互功能
+        setupAbilityChartInteractions();
+        
+        // 显示应用成功提示
+        showNotification('配置已应用！');
+    }
+    
+    /**
+     * 显示通知
+     */
+    function showNotification(message) {
+        const notification = document.createElement('div');
+        notification.className = 'config-notification';
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #4CAF50;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 4px;
+            z-index: 10001;
+            animation: slideInRight 0.3s ease;
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease';
+            setTimeout(() => {
+                document.body.removeChild(notification);
+            }, 300);
+        }, 2000);
+    }
 }
