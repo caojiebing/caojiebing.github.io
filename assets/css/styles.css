@@ -1,8 +1,31 @@
+/* 
+ * 个人网站样式表 - SEO和性能优化版本
+ * 作者: 曹洁冰
+ * 更新日期: 2024-12-19
+ * 优化特性: 关键CSS内联、懒加载、响应式设计
+ */
+
+/* 性能优化 - 关键渲染路径优化 */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 /* 全局样式重置和基础设置 */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* 字体预加载优化 */
+@font-face {
+    font-family: 'Inter';
+    font-display: swap;
+    src: local('Inter');
 }
 
 :root {
@@ -3073,6 +3096,198 @@ section {
     .theme-selector {
         grid-template-columns: 1fr;
     }
+}
+
+/* 性能优化 - 关键CSS */
+.critical-above-fold {
+    contain: layout style paint;
+}
+
+/* 懒加载图片优化 */
+img[data-src] {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+img[data-src].loaded {
+    opacity: 1;
+}
+
+/* GPU加速优化 */
+.gpu-accelerated {
+    transform: translateZ(0);
+    will-change: transform;
+}
+
+/* 减少重绘重排 */
+.no-reflow {
+    contain: layout;
+}
+
+/* 预加载关键资源 */
+.preload-hint::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiB2aWV3Qm94PSIwIDAgMSAxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjwvc3ZnPg==');
+}
+
+/* 打印样式优化 */
+@media print {
+    * {
+        background: transparent !important;
+        color: black !important;
+        box-shadow: none !important;
+        text-shadow: none !important;
+    }
+    
+    .navbar,
+    .back-to-top,
+    .config-toggle,
+    .config-panel {
+        display: none !important;
+    }
+    
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+    
+    h1, h2, h3 {
+         page-break-after: avoid;
+     }
+ }
+ 
+ /* 移动端优化 - 增强响应式设计 */
+ @media (max-width: 480px) {
+     .container {
+         padding: 0 1rem;
+     }
+     
+     .hero h1 {
+         font-size: 2rem;
+         line-height: 1.2;
+     }
+     
+     .hero .subtitle {
+         font-size: 1rem;
+         margin-bottom: 1.5rem;
+     }
+     
+     .nav-container {
+         padding: 0 1rem;
+         height: 60px;
+     }
+     
+     .logo {
+         font-size: 1.25rem;
+     }
+     
+     /* 触摸优化 */
+     .nav-link,
+     .btn,
+     .back-to-top,
+     .config-toggle {
+         min-height: 44px;
+         min-width: 44px;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+     }
+     
+     /* 文字大小优化 */
+     body {
+         font-size: 14px;
+     }
+     
+     h2 {
+         font-size: 1.75rem;
+     }
+     
+     h3 {
+         font-size: 1.25rem;
+     }
+     
+     /* 间距优化 */
+     .section {
+         padding: 3rem 0;
+     }
+     
+     .card {
+         margin-bottom: 1rem;
+     }
+ }
+ 
+ /* 平板端优化 */
+ @media (min-width: 769px) and (max-width: 1024px) {
+     .container {
+         max-width: 100%;
+         padding: 0 2rem;
+     }
+     
+     .hero h1 {
+         font-size: 3rem;
+     }
+     
+     .grid {
+         grid-template-columns: repeat(2, 1fr);
+         gap: 1.5rem;
+     }
+ }
+ 
+ /* 大屏幕优化 */
+ @media (min-width: 1400px) {
+     .container {
+         max-width: 1400px;
+     }
+     
+     .hero h1 {
+         font-size: 4rem;
+     }
+     
+     .hero .subtitle {
+         font-size: 1.5rem;
+     }
+ }
+ 
+ /* 横屏移动设备优化 */
+ @media (max-height: 500px) and (orientation: landscape) {
+     .hero {
+         min-height: 100vh;
+         padding: 2rem 0;
+     }
+     
+     .hero h1 {
+         font-size: 2rem;
+         margin-bottom: 0.5rem;
+     }
+     
+     .hero .subtitle {
+         font-size: 1rem;
+         margin-bottom: 1rem;
+     }
+ }
+ 
+ /* 高对比度模式支持 */
+ @media (prefers-contrast: high) {
+     :root {
+         --text-primary: #ffffff;
+         --text-secondary: #ffffff;
+         --bg-primary: #000000;
+         --bg-secondary: #1a1a1a;
+     }
+ }
+ 
+ /* 减少动画偏好支持 */
+ @media (prefers-reduced-motion: reduce) {
+     * {
+         animation-duration: 0.01ms !important;
+         animation-iteration-count: 1 !important;
+         transition-duration: 0.01ms !important;
+         scroll-behavior: auto !important;
+     }
+ }
     
     .color-inputs {
         grid-template-columns: 1fr;

@@ -3,40 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>曹洁冰 - 高级技术专家</title>
-    <meta name="description" content="曹洁冰 - 8年Java开发经验，6年大数据开发经验，1年AI开发经验的高级技术专家">
+    
+    <!-- 基础SEO标签 -->
+    <title>曹洁冰 - Java开发专家 | 大数据工程师 | AI应用开发 | 高级技术专家</title>
+    <meta name="description" content="曹洁冰，资深Java开发工程师，拥有8年Java开发、6年大数据开发、1年AI开发经验。专注Spring Boot、微服务架构、Hadoop、Spark、机器学习等技术领域，提供专业的技术解决方案。">
+    <meta name="keywords" content="曹洁冰,Java开发,大数据开发,AI开发,Spring Boot,微服务,Hadoop,Spark,机器学习,技术专家,软件工程师,架构师">
+    <meta name="author" content="曹洁冰">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="zh-CN">
+    
+    <!-- Open Graph 标签 (社交媒体分享) -->
+    <meta property="og:title" content="曹洁冰 - Java开发专家 | 大数据工程师 | AI应用开发">
+    <meta property="og:description" content="资深技术专家，8年Java开发经验，6年大数据开发经验，1年AI开发经验。专注于架构设计、性能优化和技术创新。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://caojiebing.github.io">
+    <meta property="og:image" content="https://caojiebing.github.io/assets/images/ai-engineer.jpg">
+    <meta property="og:site_name" content="曹洁冰个人网站">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card 标签 -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="曹洁冰 - Java开发专家 | 大数据工程师 | AI应用开发">
+    <meta name="twitter:description" content="资深技术专家，8年Java开发经验，6年大数据开发经验，1年AI开发经验。">
+    <meta name="twitter:image" content="https://caojiebing.github.io/assets/images/ai-engineer.jpg">
+    
+    <!-- 技术相关标签 -->
+    <meta name="theme-color" content="#1e3a8a">
+    <meta name="msapplication-TileColor" content="#1e3a8a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="曹洁冰">
+    <meta name="mobile-web-app-capable" content="yes">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- iOS PWA 支持 -->
+    <meta name="apple-touch-fullscreen" content="yes">
+    <link rel="apple-touch-startup-image" href="assets/images/ai-engineer.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://caojiebing.github.io">
+    
+    <!-- 图标 -->
     <link rel="icon" type="image/png" href="assets/images/logo.png">
     <link rel="shortcut icon" type="image/png" href="assets/images/logo.png">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" href="assets/images/logo.png">
+    
+    <!-- 关键CSS内联 - 首屏渲染优化 -->
+    <style>
+        /* 关键路径CSS - 首屏内容 */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            line-height: 1.6;
+        }
+        .hero { 
+            min-height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+        }
+        .hero-title { 
+            font-size: 3rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem;
+            color: #ffffff;
+        }
+        .hero-description { 
+            font-size: 1.2rem; 
+            opacity: 0.9; 
+            margin-bottom: 2rem;
+        }
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            .hero-description { font-size: 1rem; }
+        }
+    </style>
+    
+    <!-- 样式表 - 异步加载非关键CSS -->
+    <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/styles.css"></noscript>
+    
+    <!-- 字体预加载 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome - 异步加载 -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></noscript>
+    
+    <!-- 结构化数据 - JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "曹洁冰",
+        "jobTitle": "高级技术专家",
+        "description": "资深Java开发工程师，大数据专家，AI应用开发工程师",
+        "url": "https://caojiebing.github.io",
+        "image": "https://caojiebing.github.io/assets/images/ai-engineer.jpg",
+        "sameAs": [],
+        "knowsAbout": [
+            "Java开发",
+            "Spring Boot",
+            "微服务架构",
+            "大数据开发",
+            "Hadoop",
+            "Spark",
+            "AI开发",
+            "机器学习",
+            "Python",
+            "TensorFlow"
+        ],
+        "hasOccupation": {
+            "@type": "Occupation",
+            "name": "软件工程师",
+            "occupationLocation": {
+                "@type": "Country",
+                "name": "中国"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- 导航栏 -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="主导航">
         <div class="nav-container">
             <div class="nav-logo">
                 <span class="logo-text">曹洁冰</span>
             </div>
-            <ul class="nav-menu">
-                <li><a href="#home" class="nav-link">首页</a></li>
-                <li><a href="#about" class="nav-link">关于我</a></li>
-                <li><a href="#skills" class="nav-link">技能</a></li>
-                <li><a href="#projects" class="nav-link">项目</a></li>
-                <li><a href="#contact" class="nav-link">联系</a></li>
+            <ul class="nav-menu" role="menubar">
+                <li role="none"><a href="#home" class="nav-link" role="menuitem">首页</a></li>
+                <li role="none"><a href="#about" class="nav-link" role="menuitem">关于我</a></li>
+                <li role="none"><a href="#skills" class="nav-link" role="menuitem">技能</a></li>
+                <li role="none"><a href="#projects" class="nav-link" role="menuitem">项目</a></li>
+                <li role="none"><a href="#contact" class="nav-link" role="menuitem">联系</a></li>
             </ul>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="切换导航菜单" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
+    <!-- 面包屑导航 -->
+    <nav aria-label="面包屑导航" class="breadcrumb-nav" style="display: none;">
+        <ol class="breadcrumb">
+            <li><a href="/">首页</a></li>
+        </ol>
+    </nav>
+
     <!-- 主页面 -->
-    <main>
+    <main role="main">
         <!-- 英雄区域 -->
-        <section id="home" class="hero">
+        <section id="home" class="hero" aria-label="个人简介">
             <div class="hero-background">
                 <div class="tech-particles"></div>
             </div>
@@ -44,13 +179,14 @@
                 <div class="hero-text">
                     <div class="typing-container">
                         <h1 class="hero-title">
-                            <span class="title-main">高级技术专家</span>
+                            <span class="title-main">曹洁冰 - Java开发专家 & 大数据工程师</span>
                             <span class="title-sub typing-text"></span>
                         </h1>
                     </div>
                     <p class="hero-description">
-                        拥有8年Java开发经验、6年大数据开发经验和1年AI开发经验<br>
-                        专注于架构设计、性能优化和技术创新
+                        资深Java开发工程师，拥有8年Java开发经验、6年大数据开发经验和1年AI开发经验<br>
+                        专注于Spring Boot微服务架构、Hadoop大数据处理、机器学习应用开发<br>
+                        提供专业的技术解决方案和架构设计服务
                     </p>
                     <div class="hero-stats">
                         <div class="stat-item">
@@ -73,7 +209,12 @@
                 </div>
                 <div class="hero-image">
                     <div class="image-container">
-                        <img src="assets/images/ai-engineer.jpg" alt="AI工程师证件照" class="profile-image">
+                        <img src="assets/images/ai-engineer.jpg" 
+                             alt="曹洁冰 - Java开发专家、大数据工程师、AI应用开发工程师专业证件照" 
+                             class="profile-image"
+                             loading="eager"
+                             width="400"
+                             height="400">
                         <div class="certification-badge">
                             <i class="fas fa-certificate"></i>
                             <span>AI应用工程师</span>
@@ -1678,7 +1819,101 @@
         <i class="fas fa-arrow-up"></i>
     </button>
 
-    <script src="assets/js/chart-config.js"></script>
-    <script src="assets/js/script.js"></script>
+    <!-- JavaScript文件 - 延迟加载优化 -->
+    <script src="assets/js/chart-config.js" defer></script>
+    <script src="assets/js/script.js" defer></script>
+    
+    <!-- 性能监控和SEO优化脚本 -->
+    <script>
+        // 页面加载性能监控
+        window.addEventListener('load', function() {
+            if ('performance' in window) {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                console.log('页面加载时间:', perfData.loadEventEnd - perfData.fetchStart, 'ms');
+            }
+        });
+        
+        // 懒加载图片优化
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        if (img.dataset.src) {
+                            img.src = img.dataset.src;
+                            img.removeAttribute('data-src');
+                            observer.unobserve(img);
+                        }
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+        }
+        
+        // 预加载关键资源
+        const preloadLinks = [
+            { href: 'assets/css/styles.css', as: 'style' },
+            { href: 'assets/js/script.js', as: 'script' }
+        ];
+        
+        preloadLinks.forEach(link => {
+             const linkEl = document.createElement('link');
+             linkEl.rel = 'preload';
+             linkEl.href = link.href;
+             linkEl.as = link.as;
+             document.head.appendChild(linkEl);
+         });
+         
+         // Service Worker 注册 - PWA支持
+         if ('serviceWorker' in navigator) {
+             window.addEventListener('load', () => {
+                 navigator.serviceWorker.register('/sw.js')
+                     .then(registration => {
+                         console.log('Service Worker 注册成功:', registration.scope);
+                         
+                         // 检查更新
+                         registration.addEventListener('updatefound', () => {
+                             const newWorker = registration.installing;
+                             newWorker.addEventListener('statechange', () => {
+                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                     // 新版本可用，提示用户刷新
+                                     if (confirm('网站有新版本可用，是否立即更新？')) {
+                                         window.location.reload();
+                                     }
+                                 }
+                             });
+                         });
+                     })
+                     .catch(error => {
+                         console.error('Service Worker 注册失败:', error);
+                     });
+             });
+         }
+         
+         // PWA 安装提示
+         let deferredPrompt;
+         window.addEventListener('beforeinstallprompt', (e) => {
+             e.preventDefault();
+             deferredPrompt = e;
+             
+             // 显示安装按钮（如果需要）
+             const installButton = document.getElementById('install-button');
+             if (installButton) {
+                 installButton.style.display = 'block';
+                 installButton.addEventListener('click', () => {
+                     deferredPrompt.prompt();
+                     deferredPrompt.userChoice.then((choiceResult) => {
+                         if (choiceResult.outcome === 'accepted') {
+                             console.log('用户接受了PWA安装');
+                         }
+                         deferredPrompt = null;
+                     });
+                 });
+             }
+         });
+     </script>
 </body>
 </html>
