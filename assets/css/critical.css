@@ -1,0 +1,106 @@
+/* 关键CSS - 首屏渲染优化 */
+/* 仅包含首屏可见内容的样式，用于内联到HTML头部 */
+
+/* 基础重置 */
+*{margin:0;padding:0;box-sizing:border-box}
+
+/* 根变量 - 仅关键颜色 */
+:root{
+    --primary-color:#1e3a8a;
+    --bg-primary:#0f172a;
+    --bg-secondary:#1e293b;
+    --text-primary:#f8fafc;
+    --text-secondary:#cbd5e1;
+    --gradient-primary:linear-gradient(135deg,#1e3a8a 0%,#3b82f6 100%);
+    --shadow-glow:0 0 20px rgba(59,130,246,0.3);
+    --font-primary:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    --spacing-lg:1.5rem;
+    --duration-normal:0.3s;
+}
+
+/* 基础样式 */
+html{scroll-behavior:smooth;font-size:16px}
+body{
+    font-family:var(--font-primary);
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    line-height:1.6;
+    overflow-x:hidden
+}
+
+/* 导航栏 - 关键样式 */
+.navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    background:rgba(15,23,42,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    z-index:1000;
+    transition:all var(--duration-normal) ease
+}
+
+.nav-container{
+    max-width:1200px;
+    margin:0 auto;
+    padding:0 var(--spacing-lg);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    height:70px
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:700;
+    background:var(--gradient-primary);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text
+}
+
+/* 英雄区域 - 关键样式 */
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    background:var(--bg-primary);
+    overflow:hidden
+}
+
+.hero-content{
+    text-align:center;
+    z-index:2;
+    max-width:800px;
+    padding:0 var(--spacing-lg)
+}
+
+.hero h1{
+    font-size:3.5rem;
+    font-weight:800;
+    margin-bottom:1rem;
+    background:var(--gradient-primary);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text
+}
+
+.hero .subtitle{
+    font-size:1.25rem;
+    color:var(--text-secondary);
+    margin-bottom:2rem
+}
+
+/* 响应式 - 关键断点 */
+@media (max-width:768px){
+    .hero h1{font-size:2.5rem}
+    .hero .subtitle{font-size:1.1rem}
+    .nav-container{padding:0 1rem}
+}
+
+/* 性能优化 */
+.critical-above-fold{contain:layout style paint}
+.gpu-accelerated{transform:translateZ(0);will-change:transform}

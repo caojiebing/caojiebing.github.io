@@ -96,6 +96,18 @@
     <link rel="preload" href="assets/css/styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="assets/css/styles.css"></noscript>
     
+    <!-- FAQ系统样式 -->
+    <link rel="preload" href="assets/css/faq-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/faq-styles.css"></noscript>
+    
+    <!-- 社交媒体样式 -->
+    <link rel="preload" href="assets/css/social-media-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/social-media-styles.css"></noscript>
+    
+    <!-- A/B测试仪表板样式 -->
+    <link rel="preload" href="assets/css/ab-testing-styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="assets/css/ab-testing-styles.css"></noscript>
+    
     <!-- 字体预加载 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1542,6 +1554,9 @@
              </div>
          </section>
 
+         <!-- FAQ部分 -->
+         <div id="faq-container"></div>
+
          <!-- 联系方式 -->
         <section id="contact" class="contact">
             <div class="container">
@@ -1823,6 +1838,27 @@
     <script src="assets/js/chart-config.js" defer></script>
     <script src="assets/js/script.js" defer></script>
     
+    <!-- 高级SEO优化工具 -->
+    <script src="assets/js/core-web-vitals.js" defer></script>
+    <script src="assets/js/seo-analyzer.js" defer></script>
+    <script src="assets/js/ab-testing.js" defer></script>
+    
+    <!-- 内容优化和FAQ系统 -->
+    <script src="assets/js/content-semantic-optimizer.js" defer></script>
+    <script src="assets/js/faq-content-system.js" defer></script>
+    
+    <!-- 本地SEO优化器 -->
+    <script src="assets/js/local-seo-optimizer.js" defer></script>
+    
+    <!-- 社交媒体优化器 -->
+    <script src="assets/js/social-media-optimizer.js" defer></script>
+    
+    <!-- A/B测试评估器 -->
+    <script src="assets/js/ab-testing-evaluator.js" defer></script>
+    
+    <!-- SEO监控和分析工具 -->
+    <script src="assets/js/seo-monitoring-analytics.js" defer></script>
+    
     <!-- 性能监控和SEO优化脚本 -->
     <script>
         // 页面加载性能监控
@@ -1912,6 +1948,110 @@
                          deferredPrompt = null;
                      });
                  });
+             }
+         });
+         
+         // 初始化高级SEO工具
+         window.addEventListener('DOMContentLoaded', () => {
+             // 初始化Core Web Vitals监控
+             if (typeof CoreWebVitals !== 'undefined') {
+                 CoreWebVitals.init();
+                 console.log('Core Web Vitals 监控已启动');
+             }
+             
+             // 初始化SEO分析器
+             if (typeof SEOAnalyzer !== 'undefined') {
+                 const analyzer = new SEOAnalyzer();
+                 analyzer.analyze().then(results => {
+                     console.log('SEO分析结果:', results);
+                     
+                     // 自动应用优化建议
+                     if (results.recommendations && results.recommendations.length > 0) {
+                         analyzer.autoOptimize();
+                         console.log('已自动应用SEO优化建议');
+                     }
+                 });
+             }
+             
+             // 初始化A/B测试
+             if (typeof ABTesting !== 'undefined') {
+                 const abTesting = new ABTesting();
+                 abTesting.init();
+                 console.log('A/B测试框架已启动');
+             }
+             
+             // 初始化内容语义优化器
+             if (typeof ContentSemanticOptimizer !== 'undefined') {
+                 const contentOptimizer = new ContentSemanticOptimizer();
+                 
+                 // 分析页面内容
+                 const contentAnalysis = contentOptimizer.analyzeContent();
+                 console.log('内容分析结果:', contentAnalysis);
+                 
+                 // 应用自动优化
+                 contentOptimizer.autoOptimize();
+                 console.log('内容语义优化已应用');
+             }
+             
+             // 初始化FAQ系统
+             if (typeof FAQContentSystem !== 'undefined') {
+                 const faqSystem = new FAQContentSystem();
+                 faqSystem.init();
+                 console.log('FAQ内容系统已启动');
+             }
+             
+             // 初始化本地SEO优化器
+             if (typeof LocalSEOOptimizer !== 'undefined') {
+                 const localSEO = new LocalSEOOptimizer();
+                 localSEO.init();
+                 
+                 // 生成本地SEO报告
+                 const seoReport = localSEO.getLocalSEOReport();
+                 console.log('本地SEO分析报告:', seoReport);
+                 
+                 console.log('本地SEO优化器已启动');
+             }
+             
+             // 初始化社交媒体优化器
+             if (typeof SocialMediaOptimizer !== 'undefined') {
+                 const socialOptimizer = new SocialMediaOptimizer();
+                 socialOptimizer.init();
+                 
+                 // 生成社交媒体优化报告
+                 const socialReport = socialOptimizer.getSocialMediaReport();
+                 console.log('社交媒体优化报告:', socialReport);
+                 
+                 console.log('社交媒体优化器已启动');
+             }
+             
+             // 初始化A/B测试评估器
+             if (typeof ABTestingEvaluator !== 'undefined') {
+                 const abEvaluator = new ABTestingEvaluator();
+                 abEvaluator.init();
+                 
+                 // 生成A/B测试报告
+                 const abReport = abEvaluator.generateTestSummary();
+                 console.log('A/B测试评估报告:', abReport);
+                 
+                 console.log('A/B测试评估器已启动');
+             }
+             
+             // 初始化SEO监控和分析工具
+             if (typeof SEOMonitoringAnalytics !== 'undefined') {
+                 const seoMonitor = new SEOMonitoringAnalytics();
+                 seoMonitor.init();
+                 
+                 // 生成SEO监控报告
+                 const seoReport = seoMonitor.generateReport();
+                 console.log('SEO监控分析报告:', seoReport);
+                 
+                 // 定期输出报告（每5分钟）
+                 setInterval(() => {
+                     const report = seoMonitor.generateReport();
+                     console.log('SEO实时监控报告:', report);
+                 }, 300000);
+                 
+                 console.log('SEO监控和分析工具已启动');
              }
          });
      </script>

@@ -1,0 +1,469 @@
+/**
+ * A/B测试仪表板样式
+ * 为A/B测试评估器提供现代化的仪表板界面
+ */
+
+/* A/B测试仪表板主容器 */
+.ab-dashboard {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 350px;
+    max-height: 80vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.3);
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    z-index: 9999;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    overflow: hidden;
+}
+
+.ab-dashboard.minimized {
+    height: 60px;
+    overflow: hidden;
+}
+
+.ab-dashboard.minimized .ab-dashboard-content {
+    display: none;
+}
+
+/* 仪表板头部 */
+.ab-dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.ab-dashboard-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ab-dashboard-toggle {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ab-dashboard-toggle:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+/* 仪表板内容 */
+.ab-dashboard-content {
+    padding: 1.25rem;
+    max-height: calc(80vh - 80px);
+    overflow-y: auto;
+}
+
+.ab-dashboard-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.ab-dashboard-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+}
+
+.ab-dashboard-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+}
+
+.ab-dashboard-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+/* 当前测试信息 */
+.ab-current-test {
+    margin-bottom: 1.5rem;
+}
+
+.ab-current-test h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.test-info {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    padding: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.variant-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.variant-badge.variant-control {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    color: white;
+}
+
+.variant-badge.variant-optimized {
+    background: linear-gradient(135deg, #10ac84, #00d2d3);
+    color: white;
+}
+
+.test-info p {
+    margin: 0;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+/* 指标摘要 */
+.ab-metrics-summary {
+    margin-bottom: 1.5rem;
+}
+
+.ab-metrics-summary h4 {
+    margin: 0 0 0.75rem 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.metrics-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+}
+
+.metric-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.2s ease;
+}
+
+.metric-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-1px);
+}
+
+.metric-name {
+    font-size: 0.75rem;
+    opacity: 0.8;
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: #00d2d3;
+}
+
+.metric-count {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+/* 操作按钮 */
+.ab-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ab-actions button {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.75rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.ab-actions button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.ab-actions button:active {
+    transform: translateY(0);
+}
+
+.btn-switch {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24) !important;
+}
+
+.btn-switch:hover {
+    background: linear-gradient(135deg, #ee5a24, #ff6b6b) !important;
+}
+
+.btn-export {
+    background: linear-gradient(135deg, #10ac84, #00d2d3) !important;
+}
+
+.btn-export:hover {
+    background: linear-gradient(135deg, #00d2d3, #10ac84) !important;
+}
+
+.btn-reset {
+    background: linear-gradient(135deg, #ff4757, #c44569) !important;
+}
+
+.btn-reset:hover {
+    background: linear-gradient(135deg, #c44569, #ff4757) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .ab-dashboard {
+        width: calc(100vw - 40px);
+        right: 20px;
+        left: 20px;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ab-dashboard {
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        width: auto;
+        max-width: none;
+    }
+    
+    .ab-dashboard-header {
+        padding: 0.75rem 1rem;
+    }
+    
+    .ab-dashboard-content {
+        padding: 1rem;
+    }
+    
+    .ab-dashboard-header h3 {
+        font-size: 0.9rem;
+    }
+}
+
+/* 深色模式适配 */
+@media (prefers-color-scheme: dark) {
+    .ab-dashboard {
+        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+}
+
+/* 高对比度模式 */
+@media (prefers-contrast: high) {
+    .ab-dashboard {
+        border: 2px solid white;
+    }
+    
+    .metric-card,
+    .test-info,
+    .ab-actions button {
+        border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+    .ab-dashboard,
+    .ab-dashboard-toggle,
+    .metric-card,
+    .ab-actions button {
+        transition: none;
+    }
+    
+    .metric-card:hover,
+    .ab-actions button:hover {
+        transform: none;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .ab-dashboard {
+        display: none !important;
+    }
+}
+
+/* 仪表板动画 */
+@keyframes dashboardSlideIn {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ab-dashboard {
+    animation: dashboardSlideIn 0.3s ease-out;
+}
+
+/* 指标卡片动画 */
+@keyframes metricUpdate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.metric-card.updated {
+    animation: metricUpdate 0.3s ease;
+}
+
+/* 变体徽章发光效果 */
+.variant-badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.variant-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.variant-badge:hover::before {
+    left: 100%;
+}
+
+/* 滚动指示器 */
+.ab-dashboard-content::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background: linear-gradient(transparent, rgba(102, 126, 234, 0.3));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.ab-dashboard-content.scrollable::after {
+    opacity: 1;
+}
+
+/* 加载状态 */
+.metric-card.loading {
+    position: relative;
+    overflow: hidden;
+}
+
+.metric-card.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% {
+        left: -100%;
+    }
+    100% {
+        left: 100%;
+    }
+}
+
+/* 错误状态 */
+.metric-card.error {
+    border-color: #ff4757;
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.metric-card.error .metric-value {
+    color: #ff4757;
+}
+
+/* 成功状态 */
+.metric-card.success {
+    border-color: #10ac84;
+    background: rgba(16, 172, 132, 0.1);
+}
+
+.metric-card.success .metric-value {
+    color: #10ac84;
+}
+
+/* 工具提示 */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 10000;
+}
+
+.tooltip:hover::after {
+    opacity: 1;
+}

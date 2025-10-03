@@ -1,0 +1,504 @@
+/**
+ * 社交媒体优化器样式
+ * 为社交分享按钮、关注按钮和相关组件提供现代化样式
+ */
+
+/* 社交分享容器 */
+.social-share-container {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.social-share-container::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.social-share-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.social-share-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.social-share-header p {
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 分享按钮网格 */
+.social-share-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 分享按钮样式 */
+.share-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.75rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.share-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.share-btn:hover::before {
+    left: 100%;
+}
+
+.share-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-color: var(--btn-color, rgba(255, 255, 255, 0.4));
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.share-btn:active {
+    transform: translateY(0);
+}
+
+.share-btn i {
+    font-size: 1.2rem;
+    color: var(--btn-color, currentColor);
+}
+
+.share-btn span {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* 原生分享按钮特殊样式 */
+.share-btn.native-share {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    border-color: #ff6b6b;
+}
+
+.share-btn.native-share:hover {
+    background: linear-gradient(135deg, #ee5a24, #ff6b6b);
+}
+
+/* 分享统计 */
+.share-stats {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.share-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.share-count .count {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.25rem 0.5rem;
+    border-radius: 12px;
+    font-weight: bold;
+}
+
+/* 关注按钮容器 */
+.social-follow-container {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem 0;
+    color: white;
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
+}
+
+.follow-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.follow-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.follow-header p {
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* 关注按钮 */
+.follow-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.follow-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.75rem 1.5rem;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+}
+
+.follow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.follow-btn.github:hover {
+    border-color: #333;
+    background: rgba(51, 51, 51, 0.2);
+}
+
+.follow-btn.linkedin:hover {
+    border-color: #0077B5;
+    background: rgba(0, 119, 181, 0.2);
+}
+
+.follow-btn.email:hover {
+    border-color: #ea4335;
+    background: rgba(234, 67, 53, 0.2);
+}
+
+.follow-btn i {
+    font-size: 1.1rem;
+}
+
+/* 微信二维码模态框 */
+.qr-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(5px);
+}
+
+.qr-modal-content {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.qr-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.qr-header h3 {
+    margin: 0;
+    color: #07C160;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.qr-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #999;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.qr-close:hover {
+    background: #f5f5f5;
+    color: #333;
+}
+
+.qr-body {
+    text-align: center;
+}
+
+.qr-code {
+    margin: 1rem 0;
+    padding: 2rem;
+    border: 2px dashed #ddd;
+    border-radius: 12px;
+    background: #f9f9f9;
+}
+
+.qr-placeholder {
+    color: #999;
+}
+
+.qr-placeholder i {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.qr-placeholder p {
+    margin: 0.5rem 0;
+    font-weight: bold;
+}
+
+.qr-placeholder small {
+    font-size: 0.8rem;
+    word-break: break-all;
+}
+
+.qr-url {
+    background: #f5f5f5;
+    padding: 0.5rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    color: #666;
+    word-break: break-all;
+    margin-top: 1rem;
+}
+
+/* 提示消息 */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: white;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10001;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    max-width: 300px;
+}
+
+.toast.show {
+    transform: translateX(0);
+}
+
+.toast.toast-success {
+    border-left: 4px solid #10b981;
+    color: #065f46;
+}
+
+.toast.toast-success i {
+    color: #10b981;
+}
+
+.toast.toast-info {
+    border-left: 4px solid #3b82f6;
+    color: #1e40af;
+}
+
+.toast.toast-info i {
+    color: #3b82f6;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .social-share-container,
+    .social-follow-container {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+    
+    .social-share-buttons {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 0.75rem;
+    }
+    
+    .share-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .share-btn i {
+        font-size: 1rem;
+    }
+    
+    .follow-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .follow-btn {
+        width: 100%;
+        max-width: 200px;
+        justify-content: center;
+    }
+    
+    .qr-modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    .toast {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .social-share-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .share-btn span {
+        font-size: 0.75rem;
+    }
+    
+    .social-share-header h3,
+    .follow-header h3 {
+        font-size: 1.25rem;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    .social-share-container,
+    .social-follow-container,
+    .qr-modal,
+    .toast {
+        display: none !important;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    .share-btn,
+    .follow-btn {
+        border-width: 3px;
+        border-color: currentColor;
+    }
+    
+    .social-share-container,
+    .social-follow-container {
+        border: 2px solid currentColor;
+    }
+}
+
+/* 减少动画偏好支持 */
+@media (prefers-reduced-motion: reduce) {
+    .share-btn,
+    .follow-btn,
+    .toast,
+    .qr-modal-content {
+        transition: none;
+        animation: none;
+    }
+    
+    .share-btn::before {
+        display: none;
+    }
+}
+
+/* 深色模式支持 */
+@media (prefers-color-scheme: dark) {
+    .qr-modal-content {
+        background: #1f2937;
+        color: white;
+    }
+    
+    .qr-header {
+        border-bottom-color: #374151;
+    }
+    
+    .qr-code {
+        background: #374151;
+        border-color: #4b5563;
+    }
+    
+    .qr-url {
+        background: #374151;
+        color: #d1d5db;
+    }
+    
+    .qr-close:hover {
+        background: #374151;
+        color: white;
+    }
+    
+    .toast {
+        background: #1f2937;
+        color: white;
+    }
+}
